@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 512 512">
+  <title>SHIP</title>
+  <rect width="512" height="512" fill="#0f0a07"/>
+  <path d="M46 227.781L146.346 359L256 308.696L166.282 274.223L46 227.781Z" fill="#E3C7BA"/>
+  <path d="M256 308.696L146.346 359H256H365.654L256 308.696Z" fill="#E9D6CD"/>
+  <path d="M341.282 275.836L466 227.781L317.14 240.154L341.282 275.836Z" fill="#E6B8A3"/>
+  <path d="M46 227.781L166.282 274.223L191.69 240.154L46 227.781Z" fill="#CEA592"/>
+  <path d="M365.654 359L466 227.781L341.282 275.836L256 308.696L365.654 359Z" fill="#FFEBE2"/>
+  <path d="M166.282 274.223L256 308.696V153L191.69 240.154L166.282 274.223Z" fill="#E84826"/>
+  <path d="M256 308.696L341.282 275.836L317.14 240.154L256 153V308.696Z" fill="#F26D4A"/>
+</svg>

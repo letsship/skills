@@ -1,0 +1,26 @@
+{
+  "name": "letsship",
+  "owner": {
+    "name": "SHIP",
+    "email": "support@letsship.ai",
+    "url": "https://letsship.ai"
+  },
+  "metadata": {
+    "description": "SHIP's plugin: the SHIP skills and the hosted SHIP MCP server."
+  },
+  "plugins": [
+    {
+      "name": "ship",
+      "source": "./",
+      "description": "Hand issues to SHIP's agent fleet and follow each mission to a reviewed, tested pull request.",
+      "version": "0.10.0",
+      "author": {
+        "name": "SHIP",
+        "email": "support@letsship.ai",
+        "url": "https://letsship.ai"
+      },
+      "homepage": "https://letsship.ai/docs/mcp",
+      "category": "development"
+    }
+  ]
+}

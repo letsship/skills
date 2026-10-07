@@ -1,0 +1,27 @@
+{
+  "name": "ship",
+  "displayName": "SHIP",
+  "version": "0.10.0",
+  "description": "Hand issues to SHIP's agent fleet and follow each mission to a reviewed, tested pull request.",
+  "author": {
+    "name": "SHIP",
+    "email": "support@letsship.ai",
+    "url": "https://letsship.ai"
+  },
+  "homepage": "https://letsship.ai/docs/mcp",
+  "repository": "https://github.com/letsship/skills",
+  "license": "MIT",
+  "keywords": [
+    "pull-requests",
+    "code-review",
+    "ci",
+    "agents",
+    "coding-agents",
+    "qa"
+  ],
+  "icon": "./assets/ship.png",
+  "documentationUrl": "https://letsship.ai/docs/mcp",
+  "supportUrl": "https://letsship.ai/docs/mcp",
+  "privacyPolicyUrl": "https://letsship.ai/privacy",
+  "termsOfServiceUrl": "https://letsship.ai/terms"
+}
