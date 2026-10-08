@@ -1,7 +1,7 @@
 {
   "name": "ship",
   "displayName": "SHIP",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "description": "Hand issues to SHIP's agent fleet and follow each mission to a reviewed, tested pull request.",
   "author": {
     "name": "SHIP",
