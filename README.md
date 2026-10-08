@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/ship.png" alt="SHIP" width="96" height="96"></p>
+<p align="center"><a href="https://letsship.ai" target="_blank" rel="noopener"><img src="assets/ship.png" alt="SHIP" width="96" height="96"></a></p>
 
 # SHIP skills
 
@@ -7,7 +7,9 @@
 [![Cursor plugin](https://img.shields.io/badge/Cursor-plugin-0f0a07)](#install)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f0a07)](LICENSE)
 
-Teach your coding agent to hand work to SHIP. The skills delegate a plan or an open pull request to SHIP's autonomous coding agents, follow each mission, and manage the MCP servers and sandboxes that the agents use. SHIP's agents plan, build, review and test each change in your own GitHub repository, and each mission ends with a pull request that passed code review and tests.
+Teach your coding agent to hand work to SHIP. With these skills, your agent can delegate a plan or an open pull request to SHIP's autonomous coding agents. It can also follow each mission, and manage the MCP servers and sandboxes that SHIP's agents use.
+
+SHIP runs an agentic SDLC as a managed AI software factory. Its agents plan, build, review and test each change in your own GitHub repository. Each mission ends with a pull request that passed code review and tests.
 
 Each role runs the coding agent and the model that you choose: Claude Code, Codex, OpenCode, Kilo Code or the pi coding agent.
 
@@ -35,7 +37,7 @@ The same skills are on the SHIP website, so `npx skills add https://letsship.ai`
 /plugin install ship@letsship
 ```
 
-**Cursor plugin.** The same folder is a Cursor plugin, with the skills and the MCP server.
+**Cursor plugin.** The same folder is also a Cursor plugin. It adds the skills and the MCP server.
 
 **GitHub Copilot CLI and VS Code.** The folder is an Agent Plugins 1.0 package (`plugin.json`, `skills/`, `mcp.json`):
 
@@ -44,7 +46,7 @@ copilot plugin marketplace add letsship/skills
 copilot plugin install ship@letsship
 ```
 
-In VS Code, run "Chat: Install Plugin From Source" and enter `https://github.com/letsship/skills`.
+In VS Code, run "Chat: Install Plugin From Source". Then enter `https://github.com/letsship/skills`.
 
 **Codex.**
 
@@ -59,9 +61,9 @@ codex plugin add ship@letsship
 gemini extensions install https://github.com/letsship/skills
 ```
 
-**Kiro.** Select "Import power from GitHub" and enter `https://github.com/letsship/skills`.
+**Kiro.** Select "Import power from GitHub". Then enter `https://github.com/letsship/skills`.
 
-**The SHIP CLI.** `ship init` writes the skills into `.claude/skills/` in the repository you run it in:
+**The SHIP CLI.** `ship init` writes the skills into `.claude/skills/` in the repository where you run it:
 
 ```bash
 npm install -g @lets-ship/cli
@@ -82,7 +84,7 @@ ship init
 
 ## What the skills need
 
-The skills run the `ship` CLI with a `SHIP_API_TOKEN`. If either is missing, your agent runs `ship-setup` first: it installs the CLI, writes the skills and connects them to a token. Create the token at https://letsship.ai/settings/tokens, and bind it to one project.
+The skills run the `ship` CLI with a `SHIP_API_TOKEN`. If the CLI or the token is not available, your agent runs `ship-setup` first. `ship-setup` installs the CLI, writes the skills and connects them to a token. Create the token at https://letsship.ai/settings/tokens. Bind it to one project.
 
 Then ask your agent in plain words, for example:
 
@@ -92,11 +94,11 @@ Then ask your agent in plain words, for example:
 
 ## Updates
 
-These files come from the SHIP platform's own source, and each release of the `ship` CLI can change them. A copy that `ship init` wrote carries the CLI version in its frontmatter, and the skill tells your agent to run `ship init --force` when the CLI is newer. The copies in this repository and on the website carry no version, so your agent runs `ship-setup` and installs the latest CLI.
+These files come from the source code of the SHIP platform, and each release of the `ship` CLI can change them. A copy that `ship init` wrote has the CLI version in its frontmatter. When the CLI is newer, the skill tells your agent to run `ship init --force`. The copies in this repository and on the website have no version, so your agent runs `ship-setup` and installs the latest CLI.
 
 ## Security
 
-The skills run only the `ship` CLI and read only the files of the repository you work in. This repository holds no credentials. Report a security problem to support [at] letsship.ai.
+The skills run only the `ship` CLI and read only the files of the repository that you work in. This repository contains no credentials. Report a security problem to support [at] letsship.ai.
 
 ## Privacy and support
 
@@ -115,4 +117,4 @@ The skills run only the `ship` CLI and read only the files of the repository you
 
 ## License
 
-MIT. The SHIP service is under the [SHIP terms](https://letsship.ai/terms).
+The files in this repository are under the MIT license. The SHIP service is under the [SHIP terms](https://letsship.ai/terms).
