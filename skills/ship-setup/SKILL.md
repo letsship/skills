@@ -32,7 +32,9 @@ copy is the CLI version that wrote it. Later sessions read the local copies and 
 | Skill | Use it to |
 | --- | --- |
 | `ship-delegate` | Hand a plan, a spec or a finished branch to SHIP. |
-| `ship-missions` | Read the state of a mission and send it instructions. |
+| `ship-missions` | Read the state of a mission, send it instructions, control it, and read its preview, proof and credits. |
+| `ship-agent-runs` | Read the runs of the agents of a mission, their cost and their logs, and stop one run. |
+| `ship-scheduled-tasks` | Run missions on a schedule. |
 | `ship-mcp-servers` | Let the agents use the MCP servers that the repository declares. |
 | `ship-sandboxes` | Add runtimes and tools to the sandbox that the agents run in, and read the agent capacity. |
 
@@ -61,16 +63,23 @@ For the complete rules about SHIP credentials, read <https://letsship.ai/auth.md
 ## 4. Check the token
 
 ```bash
-curl -fsS -H "Authorization: Bearer $SHIP_API_TOKEN" "${SHIP_API_BASE_URL:-https://api.letsship.ai/v1}/me"
+ship whoami
 ```
 
-The response gives the user, the organization, the role and the scopes of the token. If the request fails with `401`,
-the token is not valid. Ask the user for a new token.
+The command prints the user, the organization, the role and the scopes of the token. For a project token, it also
+prints the project. If the command exits 3, the token is not set or not valid. Ask the user for a new token.
 
 ## 5. Find the project
 
-`ship` finds the project from the git remote of the repository. If the remote matches no project, or more than one
-project, the CLI tells you. Then give `--project <id>`, or export `SHIP_PROJECT_ID`. Do not guess a project id.
+```bash
+ship project list
+ship project get prj_123
+```
+
+`ship project list` lists the projects that the token can reach, each with its id and its repository. Find the project
+of this repository, then give `--project <id>` to the commands that need it, or export `SHIP_PROJECT_ID`. If more than
+one project uses the repository, ask the user which one. Do not guess a project id. `ship project get` shows the
+repository, the tracker and the default sandbox of one project.
 
 ## 6. Choose the platform
 

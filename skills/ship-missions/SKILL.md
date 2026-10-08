@@ -1,12 +1,13 @@
 ---
 name: ship-missions
-description: Follow and steer the SHIP missions that you or the user already delegated. Read the stage, review, test and pull request of a mission, and send it instructions or feedback. Use when the user asks "what is the status of SHIP-412", "is SHIP done with it" or "tell SHIP to change X". Also use it when the user wants to pass review comments or a decision to a mission that already runs.
+description: Follow, steer and finish the SHIP missions that you or the user started. List missions, read the state of one, and send it instructions or feedback. Pause, resume, stop, restart, merge or decline a mission, approve a checkpoint or a credit limit, and read its preview, proof and credits. Use when the user asks "what is the status of SHIP-412", "is SHIP done with it" or "tell SHIP to change X". Also use it when the user says "pause that mission" or "merge it", or asks for a change in one line. Use it too to pass review comments or a decision to a mission that already runs.
 ---
 
 # Follow and steer a mission
 
 A mission is the work that SHIP does for one issue. Use this skill after a hand-off (see the `ship-delegate` skill), to
-read the state of a mission and to send it new information.
+read the state of a mission, to send it new information and to finish it. To read what one agent did inside a mission,
+use the `ship-agent-runs` skill.
 
 This skill needs the `ship` CLI and a `SHIP_API_TOKEN`. If you do not have them, do the setup at
 <https://letsship.ai/SKILL.md> first. If this file has no `version` in its frontmatter, you read the hosted copy, so do
@@ -14,9 +15,33 @@ the setup too. If its `version` is older than `ship --version`, run `ship init -
 
 | Command | Token scope |
 | --- | --- |
-| `ship status` | `missions:read` |
-| `ship instruct` | `missions:write` |
-| `ship run stop` | `sandboxes:stop` (an org admin's token) |
+| `ship status`, `ship mission list` | `missions:read` |
+| `ship instruct`, `ship mission pause`, `ship mission resume`, `ship mission stop` | `missions:write` |
+| `ship mission merge`, `ship mission decline` | `missions:write` |
+| `ship mission create`, `ship mission start`, `ship mission approve-ceiling` | `missions:run` |
+| `ship mission inspect` | `inspect:read` |
+| `ship preview list`, `ship preview get` | `environments:read` |
+| `ship preview destroy` | `environments:write` |
+| `ship artifact list`, `ship artifact get` | `artifacts:read` |
+| `ship credits`, `ship notice list`, `ship notice dismiss` | any token |
+
+The controls also need a role in the organization that can control missions. A token never has more access than the
+person who created it.
+
+## See the missions
+
+```bash
+ship mission list
+ship mission list --activity needs_attention
+ship mission list --search "rate limit" --json
+ship mission list --project prj_123 --offset 25
+```
+
+The list shows each mission with what it does now, its stage and its pull request. The `--activity` flag takes the
+values of the status filter in the console, for example `building`, `reviewing`, `testing`, `ready_to_merge`,
+`needs_attention` or `paused`. The list covers every project of the token, unless `--project` names one.
+`SHIP_PROJECT_ID` does not narrow a list. When more missions match, the last line gives the `--offset` of the next
+page.
 
 ## Read the state of a mission
 
@@ -25,8 +50,22 @@ ship status SHIP-412
 ship status SHIP-412 --json    # for jq
 ```
 
-The command prints the stage of the mission, its review state, its test state and its pull request. Read it before
-you tell the user that work is complete.
+The command prints the stage of the mission, its review state, its test state and its pull request. It also lists the
+agent runs of the mission, and the run whose artifacts are the proof of the work. Read it before you tell the user that
+work is complete.
+
+## Start a mission from a request
+
+When the user asks for a change in one line and there is no plan or branch yet, let SHIP plan it:
+
+```bash
+ship mission create --title "Fix the login redirect" --description "- [ ] Login returns to the page it came from"
+ship mission start SHIP-412 --project prj_123
+```
+
+`ship mission create` files the issue and starts the mission at the Planner. Write the acceptance criteria as
+checkboxes, because the QA agent tests against them. `ship mission start` starts a mission on an issue that is already
+in the tracker. When the user has a plan or a branch, use the `ship-delegate` skill instead.
 
 ## Send feedback to a mission
 
@@ -59,17 +98,86 @@ When SHIP starts no work, the reply says why and what to do instead. An example 
 merged: the remedy is a new mission, not feedback to a finished one. Read that line before you report back. Do not tell
 the user that an instruction arrived until the reply says `recorded`.
 
-## Stop one agent run
-
-Stop a run only when the user asks for it, because the agent's work in progress is lost. Give the sandbox id of the
-run. The console shows it in the Sandbox ID field of the run. The `list_sandboxes` MCP tool and `GET /v1/sandboxes`
-also give it.
+## Pause, resume or stop a mission
 
 ```bash
-ship run stop builder-ship-412-3f9c41aa-coding-1
+ship mission pause SHIP-412
+ship mission resume SHIP-412
+ship mission stop SHIP-412
 ```
 
-The status of the run becomes `stopped` a few seconds later. The command stops one run, not the mission.
+A pause lets the current stage finish, then holds the mission before its next stage. A resume continues it. A stop ends
+every agent of the mission, and their work in progress is lost. The pull request stays open. Pause or stop a mission
+only when the user asks for it.
+
+A checkpoint in `ship.yml` pauses a mission after a stage, so that a person can read the result first. `ship status`
+then shows `paused yes (checkpoint:<role>)`. When the user approves the result, resume the mission. When the user wants
+changes to the result, send an instruction instead.
+
+## Restart a mission
+
+A mission that stopped, failed or needs attention does not start again on its own. When the user asks for a new
+attempt, start it again:
+
+```bash
+ship mission start SHIP-412 --project prj_123
+```
+
+Read `ship mission inspect` first if you must find why the last attempt failed. It needs the `inspect:read` scope.
+
+```bash
+ship mission inspect SHIP-412 --sections taskState,retryReason
+```
+
+## Let a mission continue past its credit limit
+
+Each mission can use a fixed number of credits. At that limit, the mission pauses until a member lets it continue.
+`ship status` and `ship notice list` show it. When the user agrees to the extra cost, run:
+
+```bash
+ship mission approve-ceiling SHIP-412 --project prj_123
+```
+
+The command raises the limit of the mission by one step, and the stage that stopped runs again. Without `--project` or
+`SHIP_PROJECT_ID`, the command reads the project from the mission, so the token also needs `missions:read`. Check the balance
+with `ship credits` before and after work:
+
+```bash
+ship credits
+ship notice list
+ship notice dismiss credits_low:grant_123
+```
+
+The notices show what needs attention in the organization, such as a tracker to connect again or credits that run low.
+You can close a warning with `ship notice dismiss`. A critical notice stays until someone fixes its cause.
+
+## Check the preview and the proof
+
+```bash
+ship preview list --mission SHIP-412
+ship artifact list --mission SHIP-412
+ship artifact list --run qa-ship-412-77d0e2c1-qa-1
+```
+
+SHIP deploys a preview of the pull request through the delivery pipeline of the repository, and the QA agent tests it.
+The proof of a mission is the artifacts of the QA run that passed: traces, screenshots, videos and logs. The command
+`ship status` names that run, so give its id to `--run`. Each artifact has a link that opens it. Give these links to the
+user when they ask for evidence.
+
+`ship preview destroy` removes a preview before it expires. Use it only when the user asks for it.
+
+## Merge or decline the pull request
+
+```bash
+ship mission merge SHIP-412
+ship mission decline SHIP-412
+```
+
+Merge or decline only when the user tells you to. The merge uses the merge method of the repository, and then the
+mission becomes done. If the pull request cannot merge, the command exits 5 with the reason. On a merge conflict, SHIP
+also starts the Builder to fix the conflict, and it merges the pull request when the mission is ready again. Do not
+merge again, and tell the user that the Builder works on the conflict. The decline closes the pull request without a
+merge, and you cannot undo it.
 
 ## Exit codes
 
@@ -78,6 +186,8 @@ Every command also takes `--json`, which prints the raw API response.
 | Exit code | Meaning | What to do |
 | --- | --- | --- |
 | 2 | The arguments are wrong. The message names the problem. | Fix the command. |
-| 3 | The token is not set, or it does not have the scope of the command. | Ask the user for a token with the scope. Do not retry. |
-| 4 | SHIP found no such mission, project or sandbox. | Check the issue id or the sandbox id, or give `--project <id>`. |
+| 3 | The token is not set, or it does not have the scope of the command, or the role cannot do it. | Ask the user for a token with the scope. Do not retry. |
+| 4 | SHIP found no such mission, project, preview or artifact. | Check the issue id or the other id, or give `--project <id>`. |
+| 5 | The mission is not in a state that allows the action, or the organization has no credits. | Read the message, then `ship status`. Do what the message says. |
 | 6 | The organization did not finish the onboarding. | Ask the user to finish it in the console. |
+| 8 | Too many requests, or the organization reached a daily limit. | Wait, then run the command again. Tell the user about a daily limit. |

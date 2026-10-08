@@ -72,7 +72,9 @@ ship init
 | --- | --- |
 | [`ship-setup`](skills/ship-setup/SKILL.md) | Set up SHIP in this repository. |
 | [`ship-delegate`](skills/ship-delegate/SKILL.md) | Hand work to the SHIP agent fleet from this repository. |
-| [`ship-missions`](skills/ship-missions/SKILL.md) | Follow and steer the SHIP missions that you or the user already delegated. |
+| [`ship-missions`](skills/ship-missions/SKILL.md) | Follow, steer and finish the SHIP missions that you or the user started. |
+| [`ship-agent-runs`](skills/ship-agent-runs/SKILL.md) | Read and control the agent runs of SHIP missions. |
+| [`ship-scheduled-tasks`](skills/ship-scheduled-tasks/SKILL.md) | Run SHIP missions on a schedule. |
 | [`ship-mcp-servers`](skills/ship-mcp-servers/SKILL.md) | Let the SHIP agents use the MCP servers that this repository declares. |
 | [`ship-sandboxes`](skills/ship-sandboxes/SKILL.md) | Manage the sandboxes that the SHIP agents run in. |
 
@@ -92,13 +94,13 @@ These files come from the SHIP platform's own source, and each release of the `s
 
 ## Security
 
-The skills run only the `ship` CLI and read only the files of the repository you work in. This repository holds no credentials. Report a security problem to support@letsship.ai.
+The skills run only the `ship` CLI and read only the files of the repository you work in. This repository holds no credentials. Report a security problem to support [at] letsship.ai.
 
 ## Privacy and support
 
 - Privacy policy: https://letsship.ai/privacy
 - Terms: https://letsship.ai/terms
-- Support: https://letsship.ai/support, or support@letsship.ai
+- Support: https://letsship.ai/support, or support [at] letsship.ai
 - Docs: https://letsship.ai/docs/mcp
 
 ## License
