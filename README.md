@@ -98,7 +98,7 @@ The skills run only the `ship` CLI and read only the files of the repository you
 
 - Privacy policy: https://letsship.ai/privacy
 - Terms: https://letsship.ai/terms
-- Support: support@letsship.ai
+- Support: https://letsship.ai/support, or support@letsship.ai
 - Docs: https://letsship.ai/docs/mcp
 
 ## License
