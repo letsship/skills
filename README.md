@@ -7,7 +7,9 @@
 [![Cursor plugin](https://img.shields.io/badge/Cursor-plugin-0f0a07)](#install)
 [![License: MIT](https://img.shields.io/badge/license-MIT-0f0a07)](LICENSE)
 
-Teach your coding agent to hand work to SHIP. The skills delegate a plan or an open pull request to SHIP's agent fleet, follow each mission, and manage the MCP servers and sandboxes that the fleet uses. SHIP's agents plan, build, review and test each change in your own GitHub repository.
+Teach your coding agent to hand work to SHIP. The skills delegate a plan or an open pull request to SHIP's autonomous coding agents, follow each mission, and manage the MCP servers and sandboxes that the agents use. SHIP's agents plan, build, review and test each change in your own GitHub repository, and each mission ends with a pull request that passed code review and tests.
+
+Each role runs the coding agent and the model that you choose: Claude Code, Codex, OpenCode, Kilo Code or the pi coding agent.
 
 ## Install
 
@@ -102,6 +104,14 @@ The skills run only the `ship` CLI and read only the files of the repository you
 - Terms: https://letsship.ai/terms
 - Support: https://letsship.ai/support, or support [at] letsship.ai
 - Docs: https://letsship.ai/docs/mcp
+
+## Learn more
+
+- [What an agentic SDLC is, from issue to verified pull request](https://letsship.ai/blog/agentic-sdlc)
+- [What an AI software factory is, and how to build one](https://letsship.ai/blog/what-is-an-ai-software-factory)
+- [SWE-in-a-team, a coding agent benchmark of 260 missions](https://letsship.ai/blog/swe-in-a-team)
+- [Run the pi coding agent headless](https://letsship.ai/blog/run-pi-coding-agent-headless)
+- [Send a pull request that your coding agent wrote for review and test](https://letsship.ai/platform/agent-to-pr)
 
 ## License
 

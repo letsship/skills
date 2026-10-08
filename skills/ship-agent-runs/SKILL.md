@@ -1,6 +1,6 @@
 ---
 name: ship-agent-runs
-description: Read and control the agent runs of SHIP missions. List the runs of a mission or of the organization, and read the status, resource use and cost of one run. Read what the agent did from its log, and stop one run. Use when the user asks "what did the builder do on SHIP-412", "why did the QA run fail" or "show me the agent log". Also use it when the user says "stop that agent". Use it too when a mission is slow or expensive, to find the run that is the cause.
+description: Read and control the agent runs of SHIP missions. List the runs of a mission or of the organization, and read the status, resource use and cost of one run. Read what the agent did from its log, follow one run live until it ends, and stop one run. Use when the user asks "what did the builder do on SHIP-412", "why did the QA run fail" or "show me the agent log". Also use it when the user says "stop that agent". Use it too when a mission is slow or expensive, to find the run that is the cause.
 ---
 
 # Read and control agent runs
@@ -15,12 +15,13 @@ the setup too. If its `version` is older than `ship --version`, run `ship init -
 
 | Command | Token scope |
 | --- | --- |
-| `ship run list`, `ship run get`, `ship run logs` | `sandboxes:read` |
+| `ship run list`, `ship run get`, `ship run logs`, `ship run watch` | `sandboxes:read` |
 | `ship run stop` | `sandboxes:stop` (an org admin's token) |
 
 ## When to use it
 
 - The user asks what an agent does now, or what it did.
+- You must wait for a run to end before your next step.
 - A run failed, and you must find the cause before you send an instruction to the mission.
 - A mission costs more or takes longer than the user expects, and you must find the run that is the cause.
 - The user asks you to stop one agent.
@@ -60,6 +61,28 @@ The command prints the mission and the role of the run, its status, and the reas
 prints the harness and the size of the sandbox, the start and end time, and the latest CPU, memory and disk use. The
 `session` line is the session of this run, with its outcome and its cost. The `other` line names the sessions of other
 runs with the same role. Their cost is not part of the cost of this run.
+
+## Watch a run live
+
+```bash
+ship run watch builder-ship-412-3f9c41aa-coding-1
+ship run watch qa-ship-412-77d0e2c1-qa-1 --max-seconds 300
+ship run watch qa-ship-412-77d0e2c1-qa-1 --since 118
+```
+
+The command prints the last events of the agent. Then it prints each new event on one line, for example a thought, a
+tool call or an error. It also prints a line when the mission moves to another stage.
+
+When the run ends, the command exits 0 if the run completed, and 7 if it ended in another way. With `--max-seconds`,
+the command stops after that time and exits 5 if the run is still active. Its message gives the `--since` value, so
+that the next command prints only the events that came after. Use this command to wait for a run, not a loop of
+`ship run get` calls.
+
+An agent that uses the SHIP MCP server calls the `watch_agent_run` tool with the id of the run. The call returns when
+the run ends, when its mission moves to another stage, or after `maxSeconds` (300 by default, 600 at most). While the
+call waits, the server sends each event as a progress notification, if the request has a progress token. The result
+has the status of the run, the stage, `ended`, the reason for the return, the last 20 events and a `cursor`. If the run
+is still active, call the tool again with `since` set to the cursor.
 
 ## Read what the agent did
 
@@ -107,4 +130,6 @@ Every command also takes `--json`, which prints the raw API response.
 | 2 | The arguments are wrong. The message names the problem. | Fix the command. |
 | 3 | The token is not set, or it does not have the scope of the command, or it is not an admin's token for `ship run stop`. | Ask the user for a token with the scope. Do not retry. |
 | 4 | SHIP found no such run, or the run has no saved log yet. | Check the id with `ship run list`. For a log, wait until the run ends. |
+| 5 | `ship run watch` stopped at `--max-seconds`, and the run is still active. | Run the command again with the `--since` value from its message. |
 | 6 | The organization did not finish the onboarding. | Ask the user to finish it in the console. |
+| 7 | The run that `ship run watch` followed ended, but it did not complete. | Read the reason with `ship run get`, then its log. |

@@ -1,8 +1,8 @@
 {
   "name": "ship",
   "displayName": "SHIP",
-  "version": "0.11.0",
-  "description": "Hand issues to SHIP's agent fleet and follow each mission to a reviewed, tested pull request.",
+  "version": "0.12.0",
+  "description": "Assign Linear or GitHub issues to coding agents, and get pull requests that pass automated code review and tests.",
   "author": {
     "name": "SHIP",
     "email": "support@letsship.ai",
@@ -13,14 +13,17 @@
   "license": "MIT",
   "keywords": [
     "ship",
-    "delegate",
-    "pull-requests",
-    "code-review",
-    "ci",
-    "agents",
     "coding-agents",
-    "qa",
-    "missions"
+    "agentic-coding",
+    "code-review",
+    "automated-code-review",
+    "pull-requests",
+    "linear",
+    "github-issues",
+    "agentic-sdlc",
+    "ai-sdlc",
+    "ai-software-factory",
+    "delegate"
   ],
   "icon": "./assets/ship.png",
   "documentationUrl": "https://letsship.ai/docs/mcp",
