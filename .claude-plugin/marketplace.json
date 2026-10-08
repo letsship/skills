@@ -6,13 +6,13 @@
     "url": "https://letsship.ai"
   },
   "metadata": {
-    "description": "The SHIP skills and the hosted SHIP MCP server. Assign Linear or GitHub issues to coding agents, and get pull requests that pass automated code review and tests."
+    "description": "The SHIP skills and the hosted SHIP MCP server. Assign Linear or GitHub issues to an AI coding agent team that plans, builds, then reviews and tests pull requests."
   },
   "plugins": [
     {
       "name": "ship",
       "source": "./",
-      "description": "Assign Linear or GitHub issues to coding agents, and get pull requests that pass automated code review and tests.",
+      "description": "Assign Linear or GitHub issues to an AI coding agent team that plans, builds, then reviews and tests pull requests.",
       "version": "0.12.0",
       "author": {
         "name": "SHIP",

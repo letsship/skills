@@ -2,7 +2,7 @@
   "name": "ship",
   "displayName": "SHIP",
   "version": "0.12.0",
-  "description": "Assign Linear or GitHub issues to coding agents, and get pull requests that pass automated code review and tests.",
+  "description": "Assign Linear or GitHub issues to an AI coding agent team that plans, builds, then reviews and tests pull requests.",
   "author": {
     "name": "SHIP",
     "email": "support@letsship.ai",
