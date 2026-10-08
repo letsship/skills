@@ -25,11 +25,13 @@ Changes also need the admin or owner role in the organization. Each run uses cre
 
 ```bash
 ship schedule list
+ship schedule list --project prj_123
 ship schedule get aut_123
 ship schedule templates
 ```
 
-`ship schedule list` shows each task with its cadence and its next run. `ship schedule get` also prints the prompt.
+`ship schedule list` shows each task with its cadence and its next run. With `--project`, it lists the tasks of one
+project. `ship schedule get` also prints the prompt.
 `ship schedule templates` shows prepared prompts, each with a suggested cadence.
 
 ## Create a scheduled task
@@ -74,11 +76,13 @@ when the user asks for it, because its run history goes with it.
 ```bash
 ship schedule run aut_123
 ship schedule runs aut_123
+ship schedule runs aut_123 --limit 20 --cursor eyJhIjoxfQ
 ```
 
 The command `ship schedule run` starts a mission now, outside the schedule. It also runs when the mission of the last
 run is still open. The command `ship schedule runs` lists the past runs, each with its status, its mission and the cost
-of that mission. A `dispatched` run filed its issue, but that does not say whether the work passed. Read the mission
+of that mission. When older runs exist, the last line gives the `--cursor` for the next page. A `dispatched` run filed
+its issue, but that does not say whether the work passed. Read the mission
 with `ship status` for that.
 
 ## Exit codes

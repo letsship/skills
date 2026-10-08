@@ -45,9 +45,10 @@ You can also find runs across the organization. A list covers every project of t
 ship run list --status running
 ship run list --mission SHIP-412 --role qa
 ship run list --status failed --limit 20 --json
+ship run list --status failed --limit 20 --cursor eyJhIjoxfQ
 ```
 
-A status is `running`, `completed`, `stopped`, `failed` or `stale`. A `stopped` run ended on purpose before it finished,
+When more runs match, the last line gives the `--cursor` for the next page. Give the same filters with it. A status is `running`, `completed`, `stopped`, `failed` or `stale`. A `stopped` run ended on purpose before it finished,
 for example because a newer run replaced it. A `stale` run closed without a report, after its time limit. A role is
 `planner`, `builder`, `reviewer` or `qa`.
 

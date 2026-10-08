@@ -58,6 +58,16 @@ Each skill names the scopes that its commands need. Ask for the scopes of the sk
 The user can also limit the token to one project. Then the token can only reach the missions, runs, environments,
 artifacts and scheduled tasks of that project. Suggest a project token when the work is about one project.
 
+To see the tokens of the user, or to revoke one that leaked or is no longer in use, run:
+
+```bash
+ship token list
+ship token revoke tok-pat-9b8e2a3f
+```
+
+The list shows only the tokens of the person who created the current token, never a secret. A revoked token fails at
+once, and nobody can make it work again. Revoke a token only when the user asks for it.
+
 For the complete rules about SHIP credentials, read <https://letsship.ai/auth.md>.
 
 ## 4. Check the token
@@ -80,6 +90,17 @@ ship project get prj_123
 of this repository, then give `--project <id>` to the commands that need it, or export `SHIP_PROJECT_ID`. If more than
 one project uses the repository, ask the user which one. Do not guess a project id. `ship project get` shows the
 repository, the tracker and the default sandbox of one project.
+
+```bash
+ship project update prj_123 --name web-app
+ship project update prj_123 --status paused
+ship project update prj_123 --auto-merge on
+```
+
+`ship project update` changes the settings of a project, and only the ones that you give. A paused or archived project
+starts no new missions. With auto-merge on, SHIP merges each ready pull request of the project, and no person merges it.
+The flags `--repo` and `--linear-team` connect the project to another repository or Linear team. Only an owner or an admin can
+change a project, and the token needs `projects:admin`. Change a project only when the user asks for it.
 
 ## 6. Choose the platform
 

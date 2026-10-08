@@ -17,16 +17,22 @@ the setup too. If its `version` is older than `ship --version`, run `ship init -
 | --- | --- |
 | `ship status`, `ship mission list` | `missions:read` |
 | `ship instruct`, `ship mission pause`, `ship mission resume`, `ship mission stop` | `missions:write` |
-| `ship mission merge`, `ship mission decline` | `missions:write` |
+| `ship mission merge`, `ship mission decline`, `ship mission auto-merge` | `missions:write` |
+| `ship mission archive`, `ship mission unarchive`, `ship mission disposition` | `missions:write` |
 | `ship mission create`, `ship mission start`, `ship mission approve-ceiling` | `missions:run` |
+| `ship mission override get` | `agents:read` |
+| `ship mission override set` | `agents:read` and `agents:write` |
+| `ship mission override clear` | `agents:write` |
 | `ship mission inspect` | `inspect:read` |
 | `ship preview list`, `ship preview get` | `environments:read` |
 | `ship preview destroy` | `environments:write` |
 | `ship artifact list`, `ship artifact get` | `artifacts:read` |
-| `ship credits`, `ship notice list`, `ship notice dismiss` | any token |
+| `ship credits`, `ship credits offers`, `ship credits request`, `ship notice list`, `ship notice dismiss` | any token |
+| `ship credits ledger`, `ship credits buy`, `ship credits plan` | any token, with an owner or admin behind it |
 
-The controls also need a role in the organization that can control missions. A token never has more access than the
-person who created it.
+The controls also need a role in the organization that can control missions. Archive and disposition need an owner or
+an admin. Without `--project`, the override commands read the project from the mission, so the token also needs
+`missions:read`. A token never has more access than the person who created it.
 
 ## See the missions
 
@@ -114,6 +120,48 @@ A checkpoint in `ship.yml` pauses a mission after a stage, so that a person can 
 then shows `paused yes (checkpoint:<role>)`. When the user approves the result, resume the mission. When the user wants
 changes to the result, send an instruction instead.
 
+## Change the agents of one mission
+
+An override changes the harness, the model or another setting of one role, for one mission only. Each field replaces
+the same field of `ship.yml`, and the file itself does not change. The next run of that role uses the override.
+
+```bash
+ship mission override get SHIP-412
+ship mission override set SHIP-412 --role reviewer --harness codex --model gpt-5.5
+ship mission override set SHIP-412 --role builder --checkpoint on
+ship mission override set SHIP-412 --role qa --prompt-file qa-notes.md --prompt-mode extend
+ship mission override set SHIP-412 --role builder --harness codex --unset model
+ship mission override clear SHIP-412
+```
+
+The action `set` changes only the role that `--role` names, and only the settings that you give. The other roles and
+settings of the override stay. The flag `--checkpoint on` pauses the mission after that stage, so that a person reads
+the result first. The flag `--reject-on` sets the lowest finding that makes the reviewer ask for changes. The flag
+`--base-branch` sets the branch that the mission starts from. The flag `--unset` removes stored fields, for example the
+model when you change the harness, and the action `clear` removes the whole override.
+
+Change an override only when the user asks for it, because a different model can change the cost of the mission.
+Without `--project`, the command reads the project from the mission. The variable `SHIP_PROJECT_ID` does not apply to
+an override, because an override saved for the wrong project changes no run.
+
+## Auto-merge, archive and disposition
+
+```bash
+ship mission auto-merge SHIP-412 on
+ship mission auto-merge SHIP-412 off
+ship mission archive SHIP-412
+ship mission unarchive SHIP-412
+ship mission disposition SHIP-412 superseded --superseded-by SHIP-420
+```
+
+With auto-merge on, SHIP merges the pull request of the mission when the checks, the review and the test pass, and no
+person merges it. For this mission, the setting replaces the auto-merge of the project. Turn it on only when the user
+asks for it.
+
+An archived mission is not on the board and not in `ship mission list`. The disposition records why a mission ended,
+for the delivery statistics: `product`, `probe`, `superseded`, `takeover`, or `none` to clear it. Record only what
+the user decided, never your own guess.
+
 ## Restart a mission
 
 A mission that stopped, failed or needs attention does not start again on its own. When the user asks for a new
@@ -150,6 +198,35 @@ ship notice dismiss credits_low:grant_123
 
 The notices show what needs attention in the organization, such as a tracker to connect again or credits that run low.
 You can close a warning with `ship notice dismiss`. A critical notice stays until someone fixes its cause.
+
+## Credits
+
+```bash
+ship credits ledger
+ship credits ledger --limit 100 --cursor eyJhIjoxfQ
+ship credits offers
+ship credits request -m "Two more missions for the release this week"
+```
+
+The ledger shows where the credits went, newest first: each mission and the credits that it used, each grant, each
+adjustment and each expiry. When more entries exist, the last line gives the `--cursor` for the next page. The offers
+are the credit packs, the monthly plans and Enterprise, with their prices. A credit request goes to SHIP or to the
+owners and admins of the organization, and the reply says which.
+
+Buy credits or change the plan only when the user asks you to:
+
+```bash
+ship credits buy credit_pack_50 --start-now
+ship credits buy team --plan starter --start-now
+ship credits plan scale
+ship credits plan --cancel
+```
+
+The command `ship credits buy` prints the address of a payment page and charges nothing. Give that address to the user,
+who pays there. Without `--start-now`, the command shows the text of the consent to start the credits at once, and
+stops. Show that text to the user, and add `--start-now` only when the user agrees to it. The command
+`ship credits plan` changes the monthly plan from the next renewal. With `--cancel`, the plan ends at the end of the
+month that the user paid for.
 
 ## Check the preview and the proof
 
