@@ -35,6 +35,30 @@ The same skills are on the SHIP website, so `npx skills add https://letsship.ai`
 
 **Cursor plugin.** The same folder is a Cursor plugin, with the skills and the MCP server.
 
+**GitHub Copilot CLI and VS Code.** The folder is an Agent Plugins 1.0 package (`plugin.json`, `skills/`, `mcp.json`):
+
+```bash
+copilot plugin marketplace add letsship/skills
+copilot plugin install ship@letsship
+```
+
+In VS Code, run "Chat: Install Plugin From Source" and enter `https://github.com/letsship/skills`.
+
+**Codex.**
+
+```bash
+codex plugin marketplace add letsship/skills
+codex plugin add ship@letsship
+```
+
+**Gemini CLI.** `gemini-extension.json` adds the SHIP MCP server:
+
+```bash
+gemini extensions install https://github.com/letsship/skills
+```
+
+**Kiro.** Select "Import power from GitHub" and enter `https://github.com/letsship/skills`.
+
 **The SHIP CLI.** `ship init` writes the skills into `.claude/skills/` in the repository you run it in:
 
 ```bash
@@ -69,6 +93,13 @@ These files come from the SHIP platform's own source, and each release of the `s
 ## Security
 
 The skills run only the `ship` CLI and read only the files of the repository you work in. This repository holds no credentials. Report a security problem to support@letsship.ai.
+
+## Privacy and support
+
+- Privacy policy: https://letsship.ai/privacy
+- Terms: https://letsship.ai/terms
+- Support: support@letsship.ai
+- Docs: https://letsship.ai/docs/mcp
 
 ## License
 

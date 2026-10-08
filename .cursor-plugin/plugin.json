@@ -12,12 +12,15 @@
   "repository": "https://github.com/letsship/skills",
   "license": "MIT",
   "keywords": [
+    "ship",
+    "delegate",
     "pull-requests",
     "code-review",
     "ci",
     "agents",
     "coding-agents",
-    "qa"
+    "qa",
+    "missions"
   ],
   "logo": "assets/ship.svg",
   "primaryColor": "#e84826",

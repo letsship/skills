@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ship",
+  "version": "0.11.0",
+  "description": "Hand issues to SHIP's agent fleet and follow each mission to a reviewed, tested pull request.",
+  "author": {
+    "name": "SHIP",
+    "email": "support@letsship.ai",
+    "url": "https://letsship.ai"
+  },
+  "homepage": "https://letsship.ai/docs/mcp",
+  "repository": "https://github.com/letsship/skills",
+  "license": "MIT",
+  "keywords": [
+    "ship",
+    "delegate",
+    "pull-requests",
+    "code-review",
+    "ci",
+    "agents",
+    "coding-agents",
+    "qa",
+    "missions"
+  ]
+}
