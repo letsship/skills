@@ -1,6 +1,6 @@
 ---
 name: ship-missions
-description: Follow, steer and finish the SHIP missions that you or the user started. List missions, read the state of one, and send it instructions or feedback. Pause, resume, stop, restart, merge or decline a mission, approve a checkpoint or a credit limit, and read its preview, proof and credits. Use when the user asks "what is the status of SHIP-412", "is SHIP done with it" or "tell SHIP to change X". Also use it when the user says "pause that mission" or "merge it", or asks for a change in one line. Use it too to pass review comments or a decision to a mission that already runs.
+description: Use when the user wants to follow a SHIP mission, check its status, or pass it feedback, review comments or a decision while it runs. It follows, controls and finishes the SHIP missions that you or the user started. List missions, read the state of one, and send it instructions or feedback. Pause, resume, stop, restart, merge or decline a mission, approve a checkpoint or a credit limit, and read its preview, proof and credits. For example, the user asks "what is the status of SHIP-412", "is SHIP done with it" or "tell SHIP to change X". Also use it when the user says "pause that mission" or "merge it", or asks for a change in one line.
 ---
 
 # Follow and steer a mission

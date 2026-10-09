@@ -1,6 +1,6 @@
 ---
 name: ship-delegate
-description: Hand work to the SHIP AI agent team from this repository. Delegate a plan or a spec that you wrote, so SHIP builds it. Delegate a branch with an open pull request, so SHIP reviews it, tests it and makes it ready to merge. Use when the user says "delegate this", "hand this to SHIP", "let SHIP build this", "let SHIP review this" or "ship this spec". Also use it when the user finishes a plan or a change and asks what to do next.
+description: Use when the user wants to hand a plan, a spec or an open pull request to SHIP. It hands work to the SHIP AI agent team from this repository. Delegate a plan or a spec that you wrote, so SHIP builds it. Delegate a branch with an open pull request, so SHIP runs code review and tests on it and makes it ready to merge. For example, the user says "delegate this", "hand this to SHIP", "let SHIP build this", "let SHIP review this" or "ship this spec". Also use it when the user finishes a plan or a change and asks what to do next.
 ---
 
 # Hand work to SHIP

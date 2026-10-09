@@ -1,6 +1,6 @@
 ---
 name: ship-setup
-description: Set up SHIP in this repository. It installs the ship CLI, writes the SHIP skills into the repository and connects them to a SHIP token. Use when the user says "set up https://letsship.ai/SKILL.md", "install SHIP" or "connect this repo to SHIP". Also use it when another SHIP skill tells you to run the setup first.
+description: Use when the user wants to set up or install SHIP in this repository, or when another SHIP skill says to run the setup first. It installs the ship CLI, writes the SHIP skills into the repository and connects them to a SHIP token. For example, the user says "set up https://letsship.ai/SKILL.md", "install SHIP" or "connect this repo to SHIP".
 ---
 
 # Set up SHIP

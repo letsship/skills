@@ -72,15 +72,15 @@ ship init
 
 ## Skills
 
-| Skill | What it does |
-| --- | --- |
-| [`ship-setup`](skills/ship-setup/SKILL.md) | Set up SHIP in this repository. |
-| [`ship-delegate`](skills/ship-delegate/SKILL.md) | Hand work to the SHIP AI agent team from this repository. |
-| [`ship-missions`](skills/ship-missions/SKILL.md) | Follow, steer and finish the SHIP missions that you or the user started. |
-| [`ship-agent-runs`](skills/ship-agent-runs/SKILL.md) | Read and control the agent runs of SHIP missions. |
-| [`ship-scheduled-tasks`](skills/ship-scheduled-tasks/SKILL.md) | Run SHIP missions on a schedule. |
-| [`ship-mcp-servers`](skills/ship-mcp-servers/SKILL.md) | Let the SHIP agents use the MCP servers that this repository declares. |
-| [`ship-sandboxes`](skills/ship-sandboxes/SKILL.md) | Manage the sandboxes that the SHIP agents run in. |
+| Skill | When to use it | What it does |
+| --- | --- | --- |
+| [`ship-setup`](skills/ship-setup/SKILL.md) | Use when the user wants to set up or install SHIP in this repository, or when another SHIP skill says to run the setup first. | It installs the ship CLI, writes the SHIP skills into the repository and connects them to a SHIP token. |
+| [`ship-delegate`](skills/ship-delegate/SKILL.md) | Use when the user wants to hand a plan, a spec or an open pull request to SHIP. | It hands work to the SHIP AI agent team from this repository. |
+| [`ship-missions`](skills/ship-missions/SKILL.md) | Use when the user wants to follow a SHIP mission, check its status, or pass it feedback, review comments or a decision while it runs. | It follows, controls and finishes the SHIP missions that you or the user started. |
+| [`ship-agent-runs`](skills/ship-agent-runs/SKILL.md) | Use when the user wants to read an agent's log, find why a run failed, follow a run live or stop an agent. | It reads and controls the agent runs of SHIP missions, and each run is one agent in its own sandbox. |
+| [`ship-scheduled-tasks`](skills/ship-scheduled-tasks/SKILL.md) | Use when the user wants to schedule a task that SHIP runs every day, week or month, such as a dependency update. | It runs SHIP missions on a schedule. |
+| [`ship-mcp-servers`](skills/ship-mcp-servers/SKILL.md) | Use when the user wants the SHIP agents to use an MCP server, or asks which MCP servers the agents can use. | It lets the SHIP agents use the MCP servers that this repository declares. |
+| [`ship-sandboxes`](skills/ship-sandboxes/SKILL.md) | Use when the SHIP agents need a runtime or a tool that is not in their sandbox, or a mission waits for an agent slot. | It manages the sandboxes that the SHIP agents run in. |
 
 ## What the skills need
 

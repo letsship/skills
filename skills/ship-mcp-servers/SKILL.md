@@ -1,6 +1,6 @@
 ---
 name: ship-mcp-servers
-description: Let the SHIP agents use the MCP servers that this repository declares. Bind a server to agent roles with a credential, approve its tools, start an OAuth sign-in, choose the MCP file or remove a binding. Use when the user says "let the SHIP agents use our GitHub MCP server" or "give the planner Linear access". Also use it when the user asks which MCP servers the agents can use.
+description: Use when the user wants the SHIP agents to use an MCP server, or asks which MCP servers the agents can use. It lets the SHIP agents use the MCP servers that this repository declares. Bind a server to agent roles with a credential, approve its tools, start an OAuth sign-in, choose the MCP file or remove a binding. For example, the user says "let the SHIP agents use our GitHub MCP server" or "give the planner Linear access".
 ---
 
 # Give the agents MCP servers

@@ -1,6 +1,6 @@
 ---
 name: ship-sandboxes
-description: Manage the sandboxes that the SHIP agents run in. Add runtimes and tools to a custom sandbox, build it, read its build log and roll it back. Make a sandbox the default of a project, and connect private package registries. Also read how many agents your missions run at the same time. Use when the user says "the agents need Python", "add a JDK to the SHIP sandbox" or "why does my mission wait".
+description: Use when the SHIP agents need a runtime or a tool that is not in their sandbox, or a mission waits for an agent slot. It manages the sandboxes that the SHIP agents run in. Add runtimes and tools to a custom sandbox, build it, read its build log and roll it back. Make a sandbox the default of a project, and connect private package registries. Also read how many agents your missions run at the same time. For example, the user says "the agents need Python", "add a JDK to the SHIP sandbox" or "why does my mission wait".
 ---
 
 # Manage the sandboxes that agents run in

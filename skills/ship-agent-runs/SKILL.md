@@ -1,6 +1,6 @@
 ---
 name: ship-agent-runs
-description: Read and control the agent runs of SHIP missions. List the runs of a mission or of the organization, and read the status, resource use and cost of one run. Read what the agent did from its log, follow one run live until it ends, and stop one run. Use when the user asks "what did the builder do on SHIP-412", "why did the QA run fail" or "show me the agent log". Also use it when the user says "stop that agent". Use it too when a mission is slow or expensive, to find the run that is the cause.
+description: Use when the user wants to read an agent's log, find why a run failed, follow a run live or stop an agent. It reads and controls the agent runs of SHIP missions, and each run is one agent in its own sandbox. List the runs of a mission or of the organization, and read the status, resource use and cost of one run. Read what the agent did from its log, follow one run live until it ends, and stop one run. For example, the user asks "what did the builder do on SHIP-412", "why did the QA run fail" or "show me the agent log". Also use it when the user says "stop that agent", or to find the run that makes a mission slow or expensive.
 ---
 
 # Read and control agent runs

@@ -1,6 +1,6 @@
 ---
 name: ship-scheduled-tasks
-description: Run SHIP missions on a schedule. Create a scheduled task from a prompt or a template, change its schedule or prompt, or turn it off and on. Run it now, read what its past runs did and cost, and delete it. Use when the user says "every Monday, have SHIP update our dependencies" or "run a flaky test sweep each week". Also use it when the user asks what the last scheduled run did, or which scheduled tasks a project has.
+description: Use when the user wants to schedule a task that SHIP runs every day, week or month, such as a dependency update. It runs SHIP missions on a schedule. Create a scheduled task from a prompt or a template, change its schedule or prompt, or turn it off and on. Run it now, read what its past runs did and cost, and delete it. For example, the user says "every Monday, have SHIP update our dependencies" or "run a flaky test sweep each week". Also use it when the user asks what the last scheduled run did, or which scheduled tasks a project has.
 ---
 
 # Run missions on a schedule
