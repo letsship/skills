@@ -5,8 +5,8 @@ description: Set up SHIP in this repository. It installs the ship CLI, writes th
 
 # Set up SHIP
 
-SHIP runs a fleet of agents that plan, build, review and test changes to a repository. The `ship` CLI is how you
-hand work to that fleet. This document installs the CLI and the skills that teach you each SHIP capability. Do these
+SHIP runs a team of AI coding agents that plan, build, review and test changes to a repository. The `ship` CLI is how you
+hand work to that agent team. This document installs the CLI and the skills that teach you each SHIP capability. Do these
 steps one time in each repository, and again when the CLI has a new version.
 
 ## 1. Install or upgrade the CLI

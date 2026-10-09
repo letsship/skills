@@ -75,7 +75,7 @@ ship init
 | Skill | What it does |
 | --- | --- |
 | [`ship-setup`](skills/ship-setup/SKILL.md) | Set up SHIP in this repository. |
-| [`ship-delegate`](skills/ship-delegate/SKILL.md) | Hand work to the SHIP agent fleet from this repository. |
+| [`ship-delegate`](skills/ship-delegate/SKILL.md) | Hand work to the SHIP AI agent team from this repository. |
 | [`ship-missions`](skills/ship-missions/SKILL.md) | Follow, steer and finish the SHIP missions that you or the user started. |
 | [`ship-agent-runs`](skills/ship-agent-runs/SKILL.md) | Read and control the agent runs of SHIP missions. |
 | [`ship-scheduled-tasks`](skills/ship-scheduled-tasks/SKILL.md) | Run SHIP missions on a schedule. |
