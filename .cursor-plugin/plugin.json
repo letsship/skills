@@ -2,7 +2,7 @@
   "name": "ship",
   "displayName": "SHIP",
   "description": "Assign Linear or GitHub issues to an AI coding agent team that plans, builds, then reviews and tests pull requests.",
-  "version": "0.12.0",
+  "version": "0.13.2",
   "author": {
     "name": "SHIP",
     "email": "support@letsship.ai",
@@ -23,6 +23,8 @@
     "agentic-sdlc",
     "ai-sdlc",
     "ai-software-factory",
+    "headless",
+    "headless-software-factory",
     "delegate"
   ],
   "logo": "assets/ship.svg",

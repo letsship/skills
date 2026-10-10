@@ -79,6 +79,13 @@ ship whoami
 The command prints the user, the organization, the role and the scopes of the token. For a project token, it also
 prints the project. If the command exits 3, the token is not set or not valid. Ask the user for a new token.
 
+```bash
+ship setup
+```
+
+The command prints each step of the setup checklist, and whether the organization did it. For a step that is not done,
+it also prints a link to its page. Use it to tell the user the next step.
+
 ## 5. Find the project
 
 ```bash

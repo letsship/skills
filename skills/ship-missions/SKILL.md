@@ -27,7 +27,7 @@ the setup too. If its `version` is older than `ship --version`, run `ship init -
 | `ship preview list`, `ship preview get` | `environments:read` |
 | `ship preview destroy` | `environments:write` |
 | `ship artifact list`, `ship artifact get` | `artifacts:read` |
-| `ship credits`, `ship credits offers`, `ship credits request`, `ship notice list`, `ship notice dismiss` | any token |
+| `ship credits`, `ship credits offers`, `ship credits request`, `ship setup`, `ship notice list`, `ship notice dismiss` | any token |
 | `ship credits ledger`, `ship credits buy`, `ship credits plan` | any token, with an owner or admin behind it |
 
 The controls also need a role in the organization that can control missions. Archive and disposition need an owner or

@@ -112,6 +112,16 @@ ship delegate pr SHIP-412 --prompt-file security-review.md
 ship delegate pr SHIP-412 --prompt-path .ship/lanes/security.md
 ```
 
+To give the instructions to a different role, add `--prompt-role planner|builder|reviewer|qa`. The `--prompt-file`,
+`--prompt-path`, `--prompt-mode` and `--prompt-role` flags also work on `ship mission create` and `ship mission start`,
+where the mission starts at the Planner. The delegate commands skip the Planner, so they refuse `--prompt-role planner`.
+A restart of a mission with an open pull request also skips the Planner, so name the role with `--prompt-role` there.
+
+```bash
+ship mission start SHIP-412 --prompt-file plan-notes.md
+ship delegate pr SHIP-412 --prompt-role qa --prompt-file qa-notes.md
+```
+
 Write the instructions to a file first, the same way as a plan. `--prompt-path` names a file that is already in the
 repository. Add `--prompt-ref` to read that file at a specific git ref.
 
