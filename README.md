@@ -9,7 +9,7 @@
 
 Teach your coding agent to hand work to SHIP. With these skills, your agent can delegate a plan or an open pull request to SHIP's autonomous coding agents. It can also follow each mission, and manage the MCP servers and sandboxes that SHIP's agents use.
 
-SHIP runs an agentic SDLC as a managed AI software factory. Its agents plan, build, review and test each change in your own GitHub repository. Each mission ends with a pull request that passed code review and tests.
+SHIP runs an agentic SDLC as a headless AI software factory. Its agents plan, build, review and test each change in your own GitHub repository. Each mission ends with a pull request that passed code review and tests.
 
 Each role runs the coding agent and the model that you choose: Claude Code, Codex, OpenCode, Kilo Code or the pi coding agent.
 
