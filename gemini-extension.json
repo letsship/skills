@@ -1,7 +1,7 @@
 {
   "name": "ship",
   "version": "0.13.3",
-  "description": "Assign Linear or GitHub issues to an AI coding agent team that plans, builds, then reviews and tests pull requests.",
+  "description": "Assign Linear, Jira or GitHub issues to an AI coding agent team that plans, builds, reviews and tests pull requests.",
   "mcpServers": {
     "ship": {
       "httpUrl": "https://mcp.letsship.ai/mcp"
