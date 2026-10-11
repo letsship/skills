@@ -2,7 +2,7 @@
   "name": "ship",
   "displayName": "SHIP",
   "description": "Assign Linear or GitHub issues to an AI coding agent team that plans, builds, then reviews and tests pull requests.",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "author": {
     "name": "SHIP",
     "email": "support@letsship.ai",
