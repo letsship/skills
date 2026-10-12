@@ -42,7 +42,13 @@ If a copy already exists, `ship init` writes nothing and names the file. If the 
 `ship --version`, run `ship init --force`. That replaces every copy, and edits to the copies are lost.
 
 The same skills are in the discovery index at <https://letsship.ai/.well-known/agent-skills/index.json>. An agent that
-reads skills from the web can fetch them from there.
+reads skills from the web can fetch them from there. The `skills` CLI reads that index, and it also reads
+the public repository:
+
+```bash
+npx skills add https://letsship.ai
+npx skills add letsship/skills
+```
 
 ## 3. Get a token
 

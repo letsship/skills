@@ -13,7 +13,7 @@
       "name": "ship",
       "source": "./",
       "description": "Assign Linear, Jira or GitHub issues to an AI coding agent team that plans, builds, reviews and tests pull requests.",
-      "version": "0.13.3",
+      "version": "0.13.5",
       "author": {
         "name": "SHIP",
         "email": "support@letsship.ai",

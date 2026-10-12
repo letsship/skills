@@ -1,7 +1,7 @@
 {
   "name": "ship",
   "displayName": "SHIP",
-  "version": "0.13.3",
+  "version": "0.13.5",
   "description": "Assign Linear, Jira or GitHub issues to an AI coding agent team that plans, builds, reviews and tests pull requests.",
   "author": {
     "name": "SHIP",
